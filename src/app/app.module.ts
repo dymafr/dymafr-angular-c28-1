@@ -7,6 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/modules/material.module';
 import { StoreModule } from '@ngrx/store';
 import { ROOT_REDUCERS } from './shared/store';
+import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule } from '@angular/common/http';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +18,13 @@ import { ROOT_REDUCERS } from './shared/store';
     FormsModule,
     BrowserAnimationsModule,
     MaterialModule,
+    HttpClientModule,
     StoreModule.forRoot(ROOT_REDUCERS),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      autoPause: true,
+    }),
   ],
   bootstrap: [AppComponent],
 })
